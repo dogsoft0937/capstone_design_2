@@ -2,8 +2,8 @@
 이 문서는 GSM 네트워크를 구축하기 위한 가이드라인입니다. \
 우분투 22.04.5 LTS를 기준으로 작성되었습니다. \
 **설치된 Osmocom 스택 버전은 다음과 같습니다.**
-- `OsmoHLR` : 1.9.1 \
-- `OsmoSTP` : 2.1.0.63-64c8 \
+- `OsmoHLR` : 1.9.1 
+- `OsmoSTP` : 2.1.0.63-64c8 
 - `OsmoMGW` : 1.14.0.29-2fded 
 - `OsmoBSC` : 1.13.0.9-2b718 
 - `OsmoMSC` : 1.13.0.7-86cda 
@@ -14,16 +14,16 @@
 ## 1. 필수 빌드 의존성 설치
 ```bash
 sudo apt-get update
-sudo apt-get install -y \
-  build-essential git autoconf automake libtool pkg-config \
-  libsctp-dev libssl-dev libdbi-dev libgnutls28-dev \
-  libnl-3-dev libnl-route-3-dev libpcap-dev \
-  libusb-1.0-0-dev fftw3-dev libuhd-dev uhd-host \
-  libtalloc-dev libsctp-dev shtool \
-  git-core make gcc gnutls-dev \
-  libmnl-dev liburing-dev libpcsclite-dev libpcsclite1 \
-  libortp-dev libdahdi-dev dahdi-linux\
-  dahdi-source libsqlite3-dev libboost-dev \
+sudo apt-get install -y 
+  build-essential git autoconf automake libtool pkg-config 
+  libsctp-dev libssl-dev libdbi-dev libgnutls28-dev 
+  libnl-3-dev libnl-route-3-dev libpcap-dev 
+  libusb-1.0-0-dev fftw3-dev libuhd-dev uhd-host 
+  libtalloc-dev libsctp-dev shtool 
+  git-core make gcc gnutls-dev 
+  libmnl-dev liburing-dev libpcsclite-dev libpcsclite1 
+  libortp-dev libdahdi-dev dahdi-linux
+  dahdi-source libsqlite3-dev libboost-dev 
 ```
 ## Osmocom 스택
 ### 1.libosmocore 설치
