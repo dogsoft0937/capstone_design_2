@@ -1,0 +1,10 @@
+libosmocore
+libosmo-abis
+libosmo-netif
+libosmo-sigtran
+osmo-bsc
+osmo-hlr
+osmo-mgw
+osmo-msc
+osmo-bts
+osmo-trx
