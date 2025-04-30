@@ -110,7 +110,7 @@ sudo ldconfig
 > SIGTRAN 메시지의 라우팅 역할을 수행하는 Signaling Transfer Point\
 (libosmo-sigtran을 설치하면 자동 포함됨)
 ```bash
-osmo-stp -V -> #설치 및 빌드 확인
+osmo-stp -V #설치 및 빌드 확인
 ```
 
 ### 6. `OsmoHLR`
