@@ -193,8 +193,28 @@ sudo ldconfig
 
 ```bash
 osmo-hlr -c ./config/osmo-hlr.cfg
+osmo-mgw -c ./config/osmo-mgw.cfg
 osmo-stp -c ./config/osmo-stp.cfg
 osmo-bsc -c ./config/osmo-bsc.cfg
 osmo-msc -c ./config/osmo-msc.cfg
-sudo osmo-trx-uhd -c ./config/osmo-trx-uhd.cfg
+sudo osmo-trx-uhd -C ./config/osmo-trx-uhd.cfg
 sudo osmo-bts-trx -c ./config/osmo-bts-trx.cfg
+
+```
+
+## 새 가입자 등록 쿼리
+``` bash
+-- 1. subscriber 테이블에 새 가입자 추가 (id는 1으로 가정)
+INSERT INTO subscriber (
+    id, imsi, msisdn
+) VALUES (
+    1, '12345678900000', '01012345678'
+);
+
+-- 2. auc_2g 테이블에 Ki 등록 (comp128v1)
+INSERT INTO auc_2g (
+    subscriber_id, algo_id_2g, ki
+) VALUES (
+    1, 1, 'D64BC15077631B5593F4D4936B8E1A6D'
+);
+```
