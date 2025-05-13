@@ -202,19 +202,51 @@ sudo osmo-bts-trx -c ./config/osmo-bts-trx.cfg
 
 ```
 
-## 새 가입자 등록 쿼리
-``` bash
--- 1. subscriber 테이블에 새 가입자 추가 (id는 1으로 가정)
-INSERT INTO subscriber (
-    id, imsi, msisdn
+# 사용자 등록 (예시)
+## MILENAGE 알고리즘 사용 단말기
+### subscriber 등록 
+```bash
+INSERT INTO subscriber (록
+  imsi, msisdn, nam_cs, nam_ps, ms_purged_cs, ms_purged_ps
 ) VALUES (
-    1, '12345678900000', '01012345678'
+  '1234567890000', '01012345678', 1, 1, 0, 0
+);
+```
+### auc_3g 사용
+```bash
+INSERT INTO auc_3g (subscriber_id, algo_id_3g, k, op, opc)
+VALUES (
+  (SELECT id FROM subscriber WHERE imsi = '1234567890000'),
+  5,
+  '42A92EB263FC14C9FC83EAF8720EE775', -- Ki
+  NULL,
+  '9DC40C27E0725A69747ECEDE6A6F2D58'  -- OPC
+);
+```
+
+## XOR 연산 알고리즘 사용 단말기
+### subscriber 등록
+```bash
+INSERT INTO subscriber (
+  imsi, msisdn, nam_cs, nam_ps, ms_purged_cs, ms_purged_ps
+) VALUES (
+  '1234567890001', '01056781234', 1, 1, 0, 0
 );
 
--- 2. auc_2g 테이블에 Ki 등록 (comp128v1)
-INSERT INTO auc_2g (
-    subscriber_id, algo_id_2g, ki
+```
+### auc_2g 사용
+```bash
+INSERT INTO auc_3g (
+  subscriber_id, algo_id_3g, k, op, opc, sqn, ind_bitlen
 ) VALUES (
-    1, 1, 'D64BC15077631B5593F4D4936B8E1A6D'
+  (SELECT id FROM subscriber WHERE imsi = '1234567890001'),
+  5,
+  'B3FDD321DF9B943E83C35C235EB9D192',
+  NULL,
+  'C84C20C238E1C5F95CCF4014D5BE9512',
+  0,
+  5
 );
+
+
 ```
