@@ -224,7 +224,7 @@ VALUES (
 );
 ```
 
-## XOR 연산 알고리즘 사용 단말기
+## MILENAGE 연산 알고리즘 사용 단말기
 ### subscriber 등록
 ```bash
 INSERT INTO subscriber (
@@ -234,7 +234,7 @@ INSERT INTO subscriber (
 );
 
 ```
-### auc_2g 사용
+### auc_3g 사용
 ```bash
 INSERT INTO auc_3g (
   subscriber_id, algo_id_3g, k, op, opc, sqn, ind_bitlen
