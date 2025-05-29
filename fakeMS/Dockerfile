@@ -7,7 +7,7 @@ RUN apt update && apt install -y \
     libusb-1.0-0-dev libfftw3-dev libuhd-dev uhd-host \
     python3-pip libncurses5-dev libpcsclite-dev \
     libtalloc-dev telnet net-tools libsctp-dev \
-    libgnutls28-dev sudo
+    libgnutls28-dev sudo 
 
 # 편의상 bash alias, vim 등도 추가
 RUN apt install -y vim tmux less htop iputils-ping
@@ -56,4 +56,21 @@ WORKDIR /root
 COPY ./osmo-trx-uhd.cfg /root/osmo-trx-uhd.cfg
 COPY ./mobile.cfg /root/mobile.cfg
 
-CMD ["/bin/bash"]
+RUN apt install -y usbutils
+
+RUN /usr/lib/uhd/utils/uhd_images_downloader.py
+
+WORKDIR /root/osmocom-bb/src/host/trxcon
+
+RUN autoreconf -fi && \
+    ./configure && \
+    make -j$(nproc) && \
+    make install && \
+    ldconfig
+
+WORKDIR /root
+
+COPY start.sh /root/start.sh
+RUN chmod +x /root/start.sh
+
+CMD ["/root/start.sh"]
