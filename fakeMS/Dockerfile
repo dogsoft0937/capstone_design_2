@@ -56,22 +56,4 @@ WORKDIR /root
 COPY ./osmo-trx-uhd.cfg /root/osmo-trx-uhd.cfg
 COPY ./mobile.cfg /root/mobile.cfg
 
-# 도커 빌드
-# sudo docker build -t osmobb .
-# 도커실행
-# sudo docker run -it --rm \
-#   --net host \
-#   --privileged \
-#   -v /dev/bus/usb:/dev/bus/usb \
-#   --name osmobb \
-#   osmocombb:latest /bin/bash
-
-# sudo docker run -d --net host --privileged -v /dev/bus/usb:/dev/bus/usb --name osmobb osmocombb:latest tail -f /dev/null
-
-
-# 다른 창으로 접근
-# sudo docker exec -it osmobb /bin/bash
-
-
-
 CMD ["/bin/bash"]
