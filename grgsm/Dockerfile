@@ -1,3 +1,4 @@
+## 감청만 할 수 있는 도커 파일
 # FROM ubuntu:18.04
 
 # RUN apt-get update
@@ -9,6 +10,8 @@
 # RUN pip3 install scapy
 # COPY location_update.py /root/location_update.py
 # CMD grgsm_livemon_headless -h; /bin/bash
+
+## 감청 및 송신 모두 가능한 도커 파일
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
